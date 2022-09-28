@@ -96,22 +96,42 @@ footer{
     width: 100%;
     height: 80px;
     background-color: rgb(238, 238, 238);
-    display: flex;
-    justify-content: center;
+    /* display: flex; */
+    /* justify-content: center; */
     padding: 5px;
-    align-items: center;
+    /* align-items: center; */
 }
 
-.vertical-line{
+/* .vertical-line{
     /* margin-top: 5px;
-    margin-bottom: 5px; */
+    margin-bottom: 5px; 
     height: 70%;
     background-color: rgb(66, 66, 66);
     width: 3px;
     margin-right: 20px;
     margin-left: 20px;
-}
+} */
 
 .link-to-wikipedia{
+    text-decoration: none;
+}
+.footer-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    text-align: center;  
+}
+.footer-list-item{
+    line-height: 80px;
+    margin-right: 80px;
+}
+.footer-list-item:last-child{
+    margin-right:0;
+}
+.footer-list-item a, span{
+    color: #000;
     text-decoration: none;
 }
