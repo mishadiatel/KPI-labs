@@ -11,41 +11,38 @@ namespace Lab1.Classes
 
         public int GamesCount = 0;
 
-        private static int gameid = 1234567890;
-
         private List<Game> historyGames = new List<Game>();
-
 
         public GameAccount(string UserName, int CurrentRating)
         {
             this.UserName = UserName;
-            this.CurrentRating = CurrentRating;
+            if (CurrentRating < 0)
+            {
+                throw new ArgumentOutOfRangeException("The current rating cannot be less than zero");
+            }
+            else
+            {
+                this.CurrentRating = CurrentRating;
+            }
+            
         }
 
         public void Game(GameAccount opponentName, int raiting)
         {
-            gameid++;
-            GamesCount++;
-            opponentName.GamesCount++;
             Random rnd = new Random();
-            Boolean gameStatus = rnd.Next(2) == 1;
-           
-            if (gameStatus)
+            Boolean isWin = rnd.Next(2) == 1;
+            if (isWin)
             {
                 WinGame(opponentName, raiting);
             }
             else
             {
                 LoseGame(opponentName, raiting);
-                
             }
-            historyGames.Add(new Game(this, opponentName, raiting, gameStatus));
-            opponentName.historyGames.Add(new Game(opponentName, this, raiting, !gameStatus));
-        }
-
-        public int GetGameId()
-        {
-            return gameid;
+            GamesCount++;
+            opponentName.GamesCount++;
+            historyGames.Add(new Game(this, opponentName, raiting, isWin));
+            opponentName.historyGames.Add(new Game(opponentName, this, raiting, !isWin));
         }
 
         private void WinGame(GameAccount opponentName, int rating)
@@ -61,14 +58,12 @@ namespace Lab1.Classes
                 {
                     opponentName.CurrentRating -= rating;
                 }
-               
-               
+                
             }
             else
             {
                 throw new ArgumentOutOfRangeException("The game rating cannot be less than zero");
             }
-            
             
         }
         private void LoseGame(GameAccount opponentName, int rating)
@@ -86,8 +81,6 @@ namespace Lab1.Classes
                 {
                     CurrentRating -= rating;
                 }
-
-                
                 
             }
             else
@@ -103,7 +96,7 @@ namespace Lab1.Classes
             string status;
             foreach (var game in historyGames)
             {
-                if (game.gameStatus)
+                if (game.isWin)
                 {
                     status = "win";
                 }
@@ -112,7 +105,7 @@ namespace Lab1.Classes
                     status = "lose";
                 }
                 Console.WriteLine(" VS " + game.oponent.UserName + " " + status + 
-                                  " raiting: " + game.raiting + " index of game: " + game.GetIndex() );
+                                  " raiting: " + game.raiting + " index of game: " + game.gameid );
             }
         }
 
@@ -120,9 +113,5 @@ namespace Lab1.Classes
         {
             Console.WriteLine("Player:" + UserName + "\nNumber of games played: " + GamesCount + "\nCurrent rating: " + CurrentRating);
         }
-        
-        
-        
-        
     }
 }

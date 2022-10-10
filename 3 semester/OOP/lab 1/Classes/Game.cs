@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 
 
 namespace Lab1.Classes
@@ -9,21 +8,19 @@ namespace Lab1.Classes
         public GameAccount gamer;
         public GameAccount oponent;
         public int raiting;
-        public Boolean gameStatus;
-        private int gameid;
+        public Boolean isWin;
+        public static int id = 1234567890;
+        public int gameid;
 
-        public Game(GameAccount gamer, GameAccount oponent, int raiting, Boolean gameStatus)
+        public Game(GameAccount gamer, GameAccount oponent, int raiting, Boolean isWin)
         {
             this.gamer = gamer;
             this.oponent = oponent;
             this.raiting = raiting;
-            this.gameStatus = gameStatus;
-            gameid = gamer.GetGameId();
+            this.isWin = isWin;
+            id++;
+            gameid = id;
         }
-
-        public int GetIndex()
-        {
-            return gameid;
-        }
+        
     }
 }

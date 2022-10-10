@@ -7,6 +7,7 @@ namespace Lab1
     {
         public static void Main(string[] args)
         {
+            
             try
             {
                 GameAccount account1 = new GameAccount("Lolik", 25);
@@ -25,8 +26,6 @@ namespace Lab1
                 Console.WriteLine(e);
                 throw;
             }
-            
-            
             
         }
     }
