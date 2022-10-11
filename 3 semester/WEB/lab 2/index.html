@@ -94,7 +94,7 @@
                         </div>
                     </div>
                     <div class="right">
-                        <div class="country">
+                        <fieldset class="country">
                             <label for="country">Виберіть країну</label><br>
                             <input id="country" placeholder="Оберіть ккраїну в якій проживаєте" list="countries" class="input-text">
                             <datalist id="countries">
@@ -105,7 +105,7 @@
                                 <option value="Англія">
                                 <option value="🤮росія🤮">
                             </datalist>
-                        </div>
+                        </fieldset>
                         <div class="phone">
                             <label for="phone">Вкажіть ваш номер телефону</label>
                             <input class="input-text" placeholder="+38(0XX) XXX-XX-XX" type="tel" name="phone" id="phone">
@@ -143,9 +143,8 @@
                     <label for="password">Password</label><br>
                     <input type="password" name="password" id="password" 
                     placeholder="Password" minlength="6" class="input-text"><br>
-                    <input type="submit" class="submit-btn" value="Вхід">
-    
-                    
+                    <!-- <input type="submit" class="submit-btn" value="Вхід"> -->
+                    <button class="submit-btn">Вхід</button>
                 </div>
             
             </form>
